@@ -1,7 +1,7 @@
 FROM php:5.6-apache
 
-ENV VERSION   0.4.4
-ENV CHECKSUM  b2f63542bf8371729944085561992544
+ENV VERSION   0.4.6
+ENV CHECKSUM  d208b1c56fe145855a6c824112b15646
 
 RUN apt-get update \
     && apt-get install -y unzip \
