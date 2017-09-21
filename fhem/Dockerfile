@@ -20,7 +20,7 @@ COPY start.sh ./
 COPY fhem-config/fhem.cfg ./
 COPY fhem-config/fhem.common.cfg ./
 
-RUN chown fhem:dialout fhem.cfg start.sh
+RUN chown fhem:dialout fhem.cfg fhem.common.cfg start.sh
 
 EXPOSE 8083
 
