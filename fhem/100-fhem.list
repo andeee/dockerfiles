@@ -1,1 +1,1 @@
-deb https://debian.fhem.de/stable ./
+deb http://debian.fhem.de/nightly/ /

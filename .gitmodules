@@ -1,0 +1,3 @@
+[submodule "fhem/fhem-config"]
+	path = fhem/fhem-config
+	url = ssh://git@dckr.fbw9.local:10022/andi/fhem-config.git
