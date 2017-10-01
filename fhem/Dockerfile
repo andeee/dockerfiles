@@ -19,8 +19,9 @@ WORKDIR /opt/fhem
 COPY start.sh ./
 COPY fhem-config/fhem.cfg ./
 COPY fhem-config/fhem.common.cfg ./
+COPY fhem-config/fhem.logging.cfg ./
 
-RUN chown fhem:dialout fhem.cfg fhem.common.cfg start.sh
+RUN chown fhem:dialout fhem.cfg fhem.*.cfg start.sh
 
 EXPOSE 8083
 
