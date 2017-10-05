@@ -3,8 +3,8 @@ LABEL maintainer="andeee@andeee.at"
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN sudo echo "Europe/Vienna" > /etc/timezone
-RUN sudo dpkg-reconfigure tzdata
+RUN echo "Europe/Vienna" > /etc/timezone
+RUN dpkg-reconfigure tzdata
 
 RUN apt-get update && \
     apt-get install -y curl apt-transport-https usbutils
@@ -20,9 +20,11 @@ RUN apt-get clean -y
 WORKDIR /opt/fhem
 
 COPY start.sh ./
-COPY fhem-config/* /opt/fhem-config/
+COPY fhem-config/* ./
 
-RUN chown -R fhem:dialout /opt/fhem-config start.sh
+RUN chown -R fhem:dialout fhem*cfg start.sh
+
+VOLUME [ "/opt/fhem/log" ]
 
 EXPOSE 8083
 

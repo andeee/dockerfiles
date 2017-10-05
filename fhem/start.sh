@@ -1,2 +1,2 @@
 #!/bin/bash
-perl fhem.pl ../fhem-config/fhem.cfg
+perl fhem.pl fhem.cfg
