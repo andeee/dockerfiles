@@ -13,7 +13,7 @@ COPY 100-fhem.list /etc/apt/sources.list.d/100-fhem.list
 
 RUN curl https://debian.fhem.de/archive.key | apt-key add - && \
     apt-get update && \
-    apt-get install -y fhem
+    apt-get install -y fhem libxml-simple-perl
 
 RUN apt-get clean -y
 
