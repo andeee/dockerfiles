@@ -1,7 +1,10 @@
 FROM debian:jessie
-MAINTAINER Andreas Wurzer <andeee@andeee.at>
+LABEL maintainer="andeee@andeee.at"
 
 ENV DEBIAN_FRONTEND noninteractive
+
+RUN sudo echo "Europe/Vienna" > /etc/timezone
+RUN sudo dpkg-reconfigure tzdata
 
 RUN apt-get update && \
     apt-get install -y curl apt-transport-https usbutils
@@ -17,11 +20,9 @@ RUN apt-get clean -y
 WORKDIR /opt/fhem
 
 COPY start.sh ./
-COPY fhem-config/fhem.cfg ./
-COPY fhem-config/fhem.common.cfg ./
-COPY fhem-config/fhem.logging.cfg ./
+COPY fhem-config/* /opt/fhem-config/
 
-RUN chown fhem:dialout fhem.cfg fhem.*.cfg start.sh
+RUN chown -R fhem:dialout /opt/fhem-config start.sh
 
 EXPOSE 8083
 
