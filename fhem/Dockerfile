@@ -20,9 +20,9 @@ RUN apt-get clean -y
 WORKDIR /opt/fhem
 
 COPY start.sh ./
-COPY fhem-config/* ./
+COPY fhem-config/ ./
 
-RUN chown -R fhem:dialout fhem*cfg start.sh
+RUN chown -R fhem:dialout fhem.cfg FHEM start.sh
 
 VOLUME [ "/opt/fhem/log" ]
 
