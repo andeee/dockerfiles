@@ -22,7 +22,7 @@ WORKDIR /opt/fhem
 COPY start.sh ./
 COPY fhem-config/ ./
 
-RUN chown -R fhem:dialout fhem.cfg FHEM start.sh
+RUN chown -R fhem:dialout fhem.cfg FHEM/fhem.*.cfg start.sh
 
 VOLUME [ "/opt/fhem/log" ]
 
