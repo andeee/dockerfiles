@@ -1,2 +1,3 @@
 #!/bin/bash
-perl fhem.pl fhem.cfg
+fhem_cfg="${1:-fhem.cfg}"
+perl fhem.pl "${fhem_cfg}"
