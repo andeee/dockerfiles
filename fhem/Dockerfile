@@ -8,13 +8,19 @@ RUN rm /etc/localtime
 RUN dpkg-reconfigure tzdata
 
 RUN apt-get update && \
-    apt-get install -y curl apt-transport-https usbutils gnupg2
+    apt-get upgrade -y && \
+    apt-get install -y curl usbutils perl-base libdevice-serialport-perl libwww-perl libio-socket-ssl-perl \
+    libcgi-pm-perl libjson-perl sqlite3 libdbd-sqlite3-perl libtext-diff-perl libtimedate-perl \
+    libmail-imapclient-perl libgd-graph-perl libtext-csv-perl libxml-simple-perl liblist-moreutils-perl \
+    ttf-liberation libimage-librsvg-perl libgd-text-perl libsocket6-perl libio-socket-inet6-perl libmime-base64-perl \
+    libimage-info-perl libusb-1.0-0-dev libnet-server-perl stow libxml-simple-perl git make
 
-COPY 100-fhem.list /etc/apt/sources.list.d/100-fhem.list
+RUN curl -o fhem-5.8.deb http://fhem.de/fhem-5.8.deb && dpkg -i fhem-5.8.deb && rm fhem-5.8.deb
 
-RUN curl https://debian.fhem.de/archive.key | apt-key add - && \
-    apt-get update && \
-    apt-get install -y fhem stow libxml-simple-perl git
+RUN useradd --system --home /opt/fhem --gid dialout --shell /bin/false fhem
+
+RUN cpan install Net::MQTT:Simple && \
+    cpan install Net::MQTT:Constants
 
 RUN apt-get clean -y
 
