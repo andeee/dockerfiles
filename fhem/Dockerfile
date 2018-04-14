@@ -17,8 +17,6 @@ RUN apt-get update && \
 
 RUN curl -o fhem-5.8.deb http://fhem.de/fhem-5.8.deb && dpkg -i fhem-5.8.deb && rm fhem-5.8.deb
 
-RUN useradd --system --home /opt/fhem --gid dialout --shell /bin/false fhem
-
 RUN cpan install Net::MQTT:Simple && \
     cpan install Net::MQTT:Constants
 
