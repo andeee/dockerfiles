@@ -22,16 +22,13 @@ RUN cpan install Net::MQTT:Simple && \
 
 RUN apt-get clean -y
 
-RUN git clone https://github.com/knowthelist/fhem-tablet-ui.git /opt/tabletui
-
 WORKDIR /opt/fhem
 
 COPY fhem-config/ /opt/fhem-config/
 COPY start.sh ./
 
-RUN chown -R fhem:dialout /opt/fhem-config /opt/tabletui/www/tablet /opt/fhem/start.sh
+RUN chown -R fhem:dialout /opt/fhem-config /opt/fhem/start.sh
 RUN mv /opt/fhem/fhem.cfg /opt/fhem/fhem.cfg.bak
-RUN stow -t /opt/fhem/www -d /opt/tabletui www
 RUN stow -t /opt/fhem -d /opt fhem-config
 
 VOLUME [ "/opt/fhem/log" ]
