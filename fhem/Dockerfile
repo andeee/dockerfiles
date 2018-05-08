@@ -24,18 +24,18 @@ RUN apt-get clean -y
 
 WORKDIR /opt/fhem
 
+COPY fhem.update.cfg start.sh update.sh ./
+RUN apt-get install -y --no-install-recommends telnet expect
+RUN nohup bash -c "bash /opt/fhem/start.sh fhem.update.cfg &" && \ 
+    sleep 5 && \
+    /usr/bin/expect /opt/fhem/update.sh
+RUN apt-get clean -y
+
 COPY fhem-config/ /opt/fhem-config/
-COPY start.sh update.sh ./
 
 RUN chown -R fhem:dialout /opt/fhem-config /opt/fhem/start.sh
 RUN mv /opt/fhem/fhem.cfg /opt/fhem/fhem.cfg.bak
 RUN stow -t /opt/fhem -d /opt fhem-config
-
-RUN apt-get install -y --no-install-recommends telnet expect
-RUN nohup bash -c "bash /opt/fhem/start.sh fhem.test.cfg &" && \ 
-    sleep 5 && \
-    /usr/bin/expect /opt/fhem/update.sh
-RUN apt-get clean -y
 
 VOLUME [ "/opt/fhem/log" ]
 
