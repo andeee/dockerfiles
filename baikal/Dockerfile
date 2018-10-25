@@ -17,10 +17,15 @@ RUN curl -fsSL -o baikal.zip https://github.com/fruux/Baikal/releases/download/$
     && chown -R www-data:www-data /var/www/baikal
 
 COPY baikal.conf /etc/apache2/sites-available
-RUN a2ensite baikal \
-    && a2enmod rewrite
 
-EXPOSE 80
+COPY ssl /var/www/baikal/ssl
+
+RUN a2ensite baikal \
+    && a2enmod rewrite \
+    && a2enmod ssl \
+    && chmod -R 600 /var/www/baikal/ssl
+
+EXPOSE 80 1443
 
 VOLUME /var/www/baikal/Specific
 
