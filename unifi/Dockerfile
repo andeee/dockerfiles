@@ -20,4 +20,4 @@ EXPOSE 8080 8443 8880 27117
 
 VOLUME /usr/lib/unifi/data
 
-CMD [ "java", "-Xmx256M", "-jar", "lib/ace.jar", "start" ]
+CMD [ "java", "-Xmx1024M", "-jar", "lib/ace.jar", "start" ]
