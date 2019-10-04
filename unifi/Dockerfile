@@ -2,7 +2,7 @@ FROM ubuntu:bionic
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt update && apt install -y gnupg
+RUN apt update && apt install -y gnupg ca-certificates
 
 COPY 100-ubnt.list  /etc/apt/sources.list.d/100-ubnt.list
 COPY 200-mongo.list /etc/apt/sources.list.d/200-mongo.list
