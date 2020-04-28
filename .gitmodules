@@ -4,6 +4,3 @@
 [submodule "openhab/openhab-conf"]
 	path = openhab/openhab-conf
 	url = ssh://git@dckr.fbw9.local:10022/andi/openhab-conf.git
-[submodule "baikal/ssl"]
-	path = baikal/ssl
-	url = ssh://git@dckr.fbw9.local:10022/andi/baikal-ssl-certs.git
