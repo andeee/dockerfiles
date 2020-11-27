@@ -9,7 +9,7 @@ RUN apt-get update \
 
 RUN docker-php-ext-install mysql pdo_mysql
 
-RUN curl -fsSL -o baikal.zip https://github.com/fruux/Baikal/releases/download/$VERSION/baikal-$VERSION.zip \
+RUN curl -fsSL -o baikal.zip https://github.com/sabre-io/Baikal/releases/download/$VERSION/baikal-$VERSION.zip \
     && echo "$CHECKSUM  baikal.zip" | md5sum -c - \
     && unzip baikal.zip -d /var/www/ \
     && rm baikal.zip \
