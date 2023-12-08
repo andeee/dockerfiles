@@ -1,6 +1,3 @@
 [submodule "fhem/fhem-config"]
 	path = fhem/fhem-config
-	url = ssh://git@dckr.fbw9.local:10022/andi/fhem-config.git
-[submodule "openhab/openhab-conf"]
-	path = openhab/openhab-conf
-	url = ssh://git@dckr.fbw9.local:10022/andi/openhab-conf.git
+	url = ssh://git@10.9.3.99/andi/fhem-config.git
