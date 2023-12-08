@@ -6,7 +6,7 @@ RUN apk update && \
     apk add perl perl-utils perl-device-serialport perl-json perl-io-socket-ssl perl-xml-simple \
             curl busybox-extras expect stow build-base perl-dev
 
-RUN curl -o fhem-6.0.tar.gz "http://fhem.de/fhem-6.0.tar.gz" && \
+RUN curl -o fhem-6.0.tar.gz "https://fhem.de/fhem-6.0.tar.gz" && \
     mkdir -p /opt && \
     tar xf fhem-6.0.tar.gz -C /opt && \
     mv /opt/fhem-6.0 /opt/fhem && \
